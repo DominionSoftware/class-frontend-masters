@@ -66,7 +66,7 @@ Accounts.onCreateUser(function (options, user) {
 /*****************************************************************************/
 Comments.allow({
   insert: function (userId, doc) {
-    // TODO
+    return !!userId;
   },
 
   update: function (userId, doc) {

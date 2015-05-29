@@ -141,9 +141,6 @@ Template.CommentAdd.events({
       comment: comment
     });
 
-    // XXX
-    console.log(comment);
-
     var scrollHeight = $('.comment-list').height();
     $(".main-list").animate({ scrollTop: scrollHeight }, "slow");
     form.reset();
