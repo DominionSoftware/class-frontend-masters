@@ -46,7 +46,7 @@
 <template name="Navigation">
   <header>
     <h1>Flack</h1>
-    {{! TODO: show the current users's login name }}
+    {{currentUser.profile.login}}
   </header>
 
   <div class="rooms">
@@ -80,7 +80,7 @@
 
 <template name="Room">
   <header class="main-header">
-    <h1>{{! TODO add current room name}}</h1>
+    <h1># {{activeRoom}}</h1>
   </header>
 
   {{#if currentUser}}

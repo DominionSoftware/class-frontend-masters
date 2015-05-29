@@ -10,13 +10,14 @@ Meteor.subscribe('rooms');
 /*****************************************************************************/
 Session.set('activeRoom', 'main');
 Session.set('showInviteConfirm', false);
+Session.set('showRoomAddDialog', false);
 
 /*****************************************************************************/
 /* RPC Methods */
 /*****************************************************************************/
 Meteor.methods({
   inviteFriend: function (email) {
-    // TODO
+    Session.set('showInviteConfirm', true);
   }
 });
 
@@ -37,19 +38,19 @@ Template.Navigation.helpers({
   },
 
   showInviteConfirm: function () {
-    // TODO
+    return Session.equals('showInviteConfirm', true);
   }
 });
 
 Template.Room.helpers({
   activeRoom: function () {
-    // TODO
+    return Session.get('activeRoom');
   }
 });
 
 Template.RoomAddDialog.helpers({
   showRoomAddDialog: function () {
-    // TODO
+    return Session.equals('showRoomAddDialog', true);
   }
 });
 
@@ -77,7 +78,7 @@ Template.CommentItem.helpers({
 /*****************************************************************************/
 Template.Navigation.events({
   'click [data-room-add]': function (e, tmpl) {
-    // TODO
+    Session.set('showRoomAddDialog', true);
   },
 
   'click [data-room]': function (e, tmpl) {
@@ -114,7 +115,7 @@ Template.RoomAddDialog.events({
       name: roomName
     });
 
-    //TODO
+    Session.set('showRoomAddDialog', false);
     Session.set('activeRoom', roomName);
   },
 
@@ -140,7 +141,7 @@ Template.CommentAdd.events({
     Comments.insert({
       login: user.profile.login,
       timestamp: new Date,
-      room: 'main', // TODO: make this dynamic to actual room!
+      room: Session.get('activeRoom'),
       comment: comment
     });
 
