@@ -3,7 +3,7 @@
 /*****************************************************************************/
 Meteor.subscribe('comments');
 Meteor.subscribe('users');
-//TODO
+Meteor.subscribe('rooms');
 
 /*****************************************************************************/
 /* Initial State */
@@ -29,7 +29,7 @@ Template.Navigation.helpers({
   },
 
   isRoomActiveClass: function (room) {
-    // TODO
+    return Session.equals('activeRoom', room) ? 'active' : '';
   },
 
   showInviteConfirm: function () {

@@ -9,7 +9,9 @@ Meteor.publish('users', function () {
   return Meteor.users.find({}, {fields: {profile: 1}});
 });
 
-// TODO
+Meteor.publish('rooms', function () {
+  return Rooms.find({}, {sort: {name: 1}});
+});
 
 /*****************************************************************************/
 /* RPC Methods */
@@ -80,7 +82,7 @@ Comments.allow({
 
 Rooms.allow({
   insert: function (userId, doc) {
-    // TODO
+    return !!userId;
   },
 
   update: function (userId, doc) {
