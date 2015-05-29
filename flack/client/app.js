@@ -81,8 +81,7 @@ Template.Navigation.events({
   },
 
   'click [data-room]': function (e, tmpl) {
-    var room = $(e.target).data('room');
-    Session.set('activeRoom', room);
+    Session.set('activeRoom', this.name);
   },
 
   'submit form[data-invite]': function (e, tmpl) {
