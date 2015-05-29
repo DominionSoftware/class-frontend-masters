@@ -124,5 +124,28 @@ Template.RoomAddDialog.events({
 });
 
 Template.CommentAdd.events({
-  // TODO implement submit form handler
+  'submit form': function (e, tmpl) {
+    e.preventDefault();
+
+    var form = tmpl.find('form');
+    var comment = tmpl.find('[name=comment]').value;
+    var user = Meteor.user();
+
+    if (comment.trim() == "")
+      return;
+
+    Comments.insert({
+      login: user.profile.login,
+      timestamp: new Date,
+      room: 'main', // TODO: make this dynamic to actual room!
+      comment: comment
+    });
+
+    // XXX
+    console.log(comment);
+
+    var scrollHeight = $('.comment-list').height();
+    $(".main-list").animate({ scrollTop: scrollHeight }, "slow");
+    form.reset();
+  }
 });
