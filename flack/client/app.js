@@ -24,12 +24,16 @@ Meteor.methods({
 /* Template Helpers */
 /*****************************************************************************/
 Template.Navigation.helpers({
+  mainRoom: function () {
+    return Rooms.findOne({name: 'main'});
+  },
+
   rooms: function () {
     return Rooms.find({name: {$ne: 'main'}}, {sort: {name: 1}});
   },
 
-  isRoomActiveClass: function (room) {
-    return Session.equals('activeRoom', room) ? 'active' : '';
+  isRoomActiveClass: function () {
+    return Session.equals('activeRoom', this.name) ? 'active' : '';
   },
 
   showInviteConfirm: function () {

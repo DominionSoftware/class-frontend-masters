@@ -53,10 +53,12 @@
     <h3>Rooms <span data-room-add class="add-room fa fa-plus-circle"></span></h3>
 
     <ul>
-      <li data-room="main" class="{{isRoomActiveClass 'main'}}"># main</li>
+      {{#with mainRoom}}
+        <li data-room class="{{isRoomActiveClass}}"># main</li>
+      {{/with}}
 
       {{#each rooms}}
-        <li class="{{isRoomActiveClass name}}"># {{name}}</li>
+        <li data-room class="{{isRoomActiveClass}}"># {{name}}</li>
       {{/each}}
     </ul>
   </div>
