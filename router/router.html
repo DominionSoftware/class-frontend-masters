@@ -1,0 +1,33 @@
+<head>
+  <title>router</title>
+</head>
+
+<body>
+</body>
+
+<template name="Layout">
+  <ul>
+    <li><a href="/rooms/main">Main Room</a></li>
+    <li><a href="/rooms/development">Development Room</a></li>
+  </ul>
+
+  <div>
+    {{> yield}}
+  </div>
+
+  <footer>
+    {{> yield "footer"}}
+  </footer>
+</template>
+
+<template name="Home">
+  <h1>Home</h1>
+</template>
+
+<template name="Room">
+  <h1>{{name}}</h1>
+
+  {{#contentFor "footer"}}
+    My Room Footer!
+  {{/contentFor}}
+</template>
