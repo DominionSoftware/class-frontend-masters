@@ -1,0 +1,38 @@
+<head>
+  <title>app</title>
+</head>
+
+<body>
+ {{> CommentList}}
+ {{> CommentAdd}}
+</body>
+
+<template name = "CommentList">
+  
+  <h1>Flack</h1>
+ <ul>
+  {{#each comments}}
+  <li>
+    <div>
+      {{login}}
+    </div>
+    <div>
+      {{timestamp}}
+    </div>
+    <div>
+      {{comment}}
+    </div>
+  </li>
+  {{else}}
+  <li>Sorry no comments yet.</li>
+  {{/each}}
+</ul>
+</template>
+
+<template name="CommentAdd">
+  <form>
+    <input type="ext" name="comment" autofocus placeholder="Add a comment ..." />
+     <input type="submit" name="Add"  />
+   </form>
+
+</template>
