@@ -5,11 +5,17 @@ import './main.html';
 
 Comments = new Mongo.Collection('comments');
 
+Meteor.subscribe('comments');
+
 Template.CommentList.helpers({
 comments: function(){
 		return Comments.find();
-	}
+	},
 
+formatTimestamp:function(timestamp){
+	var m = moment(timestamp);
+	return m.calendar();
+}
 });
 
 Template.CommentAdd.events(
