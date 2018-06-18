@@ -6,6 +6,8 @@ import './main.html';
 Comments = new Mongo.Collection('comments');
 
 Meteor.subscribe('comments');
+Meteor.subscribe('recentComments');
+ 
 
 Template.CommentList.helpers({
 comments: function(){
@@ -26,7 +28,7 @@ Template.CommentAdd.events(
 		var formEl = tmpl.find('form');
 		var commentEl = tmpl.find('[name=comment]');
 		var comment = commentEl.value;
-
+		debugger;
 		Comments.insert({
 			login: 'rfrank@dominionsw.com',
 			timestamp: new Date,
